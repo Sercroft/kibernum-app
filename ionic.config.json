@@ -1,0 +1,7 @@
+{
+  "name": "Kibernum",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
