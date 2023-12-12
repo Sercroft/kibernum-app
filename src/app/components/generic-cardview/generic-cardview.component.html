@@ -1,0 +1,113 @@
+<ion-card>
+  <ion-card-content>
+    <form [formGroup]="formCardview" (ngSubmit)="sendData()">
+      <ion-grid>
+
+        <ion-row>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-select placeholder="Tipo de identificación" (ionChange)="selectOption($event, 0)">
+                <div *ngFor="let item of listIdentifications">
+                  <ion-select-option [value]="item.value">{{item.identfication}}</ion-select-option>
+                </div>
+              </ion-select>
+              <ion-icon name="chevron-down-outline" slot="end" class="icon"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+
+        <br>
+
+        <ion-row>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-input label="Número de identificación" labelPlacement="floating" type="number" placeholder="Número de identificación"
+              formControlName="num_identification"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+
+        <br>
+
+        <ion-row>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-input label="Nombre" labelPlacement="floating" type="text" placeholder="Nombre" formControlName="firstname"
+              maxlength="15"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+
+        <br>
+
+        <ion-row>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-input label="Apellido" label-placement="floating" type="text" placeholder="Apellido" formControlName="surname"
+              maxlength="15"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+
+        <br>
+
+        <ion-row>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-select placeholder="Genero" (ionChange)="selectOption($event, 1)">
+                <ion-select-option value="M">Másculino</ion-select-option>
+                <ion-select-option value="F">Femenino</ion-select-option>
+              </ion-select>
+              <ion-icon name="chevron-down-outline" slot="end" class="icon"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+
+        <br>
+
+        <ion-row>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-input label="Teléfono" type="number" label-placement="floating" placeholder="Teléfono" formControlName="phone"
+              maxlength="10"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+
+        <br>
+
+        <ion-row style="width: 100%;">
+          <ion-col>
+            <ion-button (click)="getLocation()" fill="clear" expand="block">
+              <strong class="txt-btn">Obtener mi ubicación</strong>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="isLoading" class="loader-container">
+          <br>
+            <span class="loader"></span>
+        </ion-row>
+
+        <br>
+
+        <ion-row>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-input ion-input type="text" label-placement="floating" formControlName="address" readonly="true" [value]="address"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-row>
+
+        <ion-row style="width: 100%;">
+          <ion-col>
+            <ion-button type="submit" fill="clear" expand="block">
+              <strong>Send data</strong>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+  </ion-card-content>
+</ion-card>
